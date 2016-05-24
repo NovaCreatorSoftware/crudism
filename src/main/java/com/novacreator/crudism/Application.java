@@ -27,7 +27,7 @@ public class Application extends SpringBootServletInitializer {
 	public static void main(String[] args) {
         context = SpringApplication.run(Application.class, args);
         contextPath = ((ServerProperties)context.getBean("serverProperties")).getContextPath();
-        LOGGER.info("######## DOO UP UP UP ########");
+        LOGGER.info("######## CRUDISM UP UP UP ########");
     }
 	
 	public static ConfigurableApplicationContext getContext() {
