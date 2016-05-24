@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="MyApp" packages="">
+	<Appenders>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="%m%n" />
+		</Console>
+		
+		<File name="dooErrorLogFile" fileName="logs/crudismError.log">
+			<PatternLayout>
+				<Pattern>%d %p %c [%t] %m%n</Pattern>
+			</PatternLayout>
+		</File>
+		<Async name="AsyncErrorAppender">
+			<AppenderRef ref="dooErrorLogFile" />
+		</Async>
+		
+		<File name="dooInfoLogFile" fileName="logs/crudism.log">
+			<PatternLayout>
+				<Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+			</PatternLayout>
+		</File>
+		<Async name="AsyncInfoAppender">
+			<AppenderRef ref="dooInfoLogFile" />
+		</Async>
+		
+		<JDBC name="DatabaseAppender" tableName="log">
+			<ConnectionFactory class="com.novacreator.crudism.services.DatabaseLoggerService" method="getDatabaseConnection"/>
+			<!--<DataSource jndiName="java:/comp/env/jdbc/LoggingDataSource"/>-->
+			<Column name="eventDate" isEventTimestamp="true" />
+			<Column name="level" pattern="%level" />
+			<Column name="logger" pattern="%logger" />
+			<Column name="message" pattern="%message" />
+			<Column name="exception" pattern="%ex{full}" />
+		</JDBC>
+	</Appenders>
+	<Loggers>
+		<Root level="trace">
+			<AppenderRef ref="STDOUT" level="INFO"/>
+			<AppenderRef ref="AsyncInfoAppender" level="INFO"/>
+			<AppenderRef ref="AsyncErrorAppender" level="ERROR"/>
+			<AppenderRef ref="DatabaseAppender" level="INFO"/>
+		</Root>
+	</Loggers>
+</Configuration>
