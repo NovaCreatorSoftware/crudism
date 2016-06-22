@@ -1,5 +1,7 @@
 package com.novacreator.crudism.controllers;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -83,511 +85,529 @@ public class DatabaseDetails {
 	public String getCurrentCatalog() {
 		return currentCatalog;
 	}
-	public void setCurrentCatalog(String currentCatalog) {
+	void setCurrentCatalog(String currentCatalog) {
 		this.currentCatalog = currentCatalog;
 	}
 	
 	public String getFromClientInfo(String key) {
 		return clientInfo.get(key);
 	}
-	public void addToClientInfo(String key, String value) {
+	public Map<String, String> getClientInfo() {
+		return Collections.unmodifiableMap(clientInfo);
+	}
+	void addToClientInfo(String key, String value) {
 		clientInfo.put(key, value);
 	}
 
 	public String getSchema() {
 		return schema;
 	}
-	public void setSchema(String schema) {
+	void setSchema(String schema) {
 		this.schema = schema;
 	}
 	
 	public String getIdentifierQuote() {
 		return identifierQuote;
 	}
-	public void setIdentifierQuote(String identifierQuote) {
+	void setIdentifierQuote(String identifierQuote) {
 		this.identifierQuote = identifierQuote;
 	}
 	
 	public Set<String> getCatalogs() {
 		return catalogs;
 	}
-	public void addToCatalogs(String catalog) {
+	void addToCatalogs(String catalog) {
 		catalogs.add(catalog);
 	}
 
 	public String getCatalogSeparator() {
 		return catalogSeparator;
 	}
-	public void setCatalogSeparator(String catalogSeparator) {
+	void setCatalogSeparator(String catalogSeparator) {
 		this.catalogSeparator = catalogSeparator;
 	}
 	
 	public String getCatalogTerm() {
 		return catalogTerm;
 	}
-	public void setCatalogTerm(String catalogTerm) {
+	void setCatalogTerm(String catalogTerm) {
 		this.catalogTerm = catalogTerm;
 	}
 	
 	public Set<ClientInfo> getMetadataClientInfos() {
-		return metadataClientInfos;
+		return Collections.unmodifiableSet(metadataClientInfos);
 	}
-	public void setMetadataClientInfos(Set<ClientInfo> metadataClientInfos) {
-		this.metadataClientInfos = metadataClientInfos;
+	void addToMetadataClientInfos(ClientInfo metadataClientInfo) {
+		this.metadataClientInfos.add(metadataClientInfo);
 	}
 	
 	public int getDatabaseMajorVersion() {
 		return databaseMajorVersion;
 	}
-	public void setDatabaseMajorVersion(int databaseMajorVersion) {
+	void setDatabaseMajorVersion(int databaseMajorVersion) {
 		this.databaseMajorVersion = databaseMajorVersion;
 	}
 	
 	public int getDatabaseMinorVersion() {
 		return databaseMinorVersion;
 	}
-	public void setDatabaseMinorVersion(int databaseMinorVersion) {
+	void setDatabaseMinorVersion(int databaseMinorVersion) {
 		this.databaseMinorVersion = databaseMinorVersion;
 	}
 	
 	public String getDatabaseProductName() {
 		return databaseProductName;
 	}
-	
-	public void setDatabaseProductName(String databaseProductName) {
+	void setDatabaseProductName(String databaseProductName) {
 		this.databaseProductName = databaseProductName;
 	}
+	
 	public String getDatabaseProductVersion() {
 		return databaseProductVersion;
 	}
-	
-	public void setDatabaseProductVersion(String databaseProductVersion) {
+	void setDatabaseProductVersion(String databaseProductVersion) {
 		this.databaseProductVersion = databaseProductVersion;
 	}
+	
 	public int getDefaultTransactionIsolation() {
 		return defaultTransactionIsolation;
 	}
-	public void setDefaultTransactionIsolation(int defaultTransactionIsolation) {
+	void setDefaultTransactionIsolation(int defaultTransactionIsolation) {
 		this.defaultTransactionIsolation = defaultTransactionIsolation;
 	}
 	
 	public int getDriverMajorVersion() {
 		return driverMajorVersion;
 	}
-	public void setDriverMajorVersion(int driverMajorVersion) {
+	void setDriverMajorVersion(int driverMajorVersion) {
 		this.driverMajorVersion = driverMajorVersion;
 	}
 	
 	public int getDriverMinorVersion() {
 		return driverMinorVersion;
 	}
-	public void setDriverMinorVersion(int driverMinorVersion) {
+	void setDriverMinorVersion(int driverMinorVersion) {
 		this.driverMinorVersion = driverMinorVersion;
 	}
 	
 	public String getDriverName() {
 		return driverName;
 	}
-	public void setDriverName(String driverName) {
+	void setDriverName(String driverName) {
 		this.driverName = driverName;
 	}
 	
 	public String getDriverVersion() {
 		return driverVersion;
 	}
-	public void setDriverVersion(String driverVersion) {
+	void setDriverVersion(String driverVersion) {
 		this.driverVersion = driverVersion;
 	}
 	
 	public int getJdbcMajorVersion() {
 		return jdbcMajorVersion;
 	}
-	public void setJdbcMajorVersion(int jdbcMajorVersion) {
+	void setJdbcMajorVersion(int jdbcMajorVersion) {
 		this.jdbcMajorVersion = jdbcMajorVersion;
 	}
 	
 	public int getJdbcMinorVersion() {
 		return jdbcMinorVersion;
 	}
-	public void setJdbcMinorVersion(int jdbcMinorVersion) {
+	void setJdbcMinorVersion(int jdbcMinorVersion) {
 		this.jdbcMinorVersion = jdbcMinorVersion;
 	}
 	
 	public int getMaxBinaryLiteralLength() {
 		return maxBinaryLiteralLength;
 	}
-	public void setMaxBinaryLiteralLength(int maxBinaryLiteralLength) {
+	void setMaxBinaryLiteralLength(int maxBinaryLiteralLength) {
 		this.maxBinaryLiteralLength = maxBinaryLiteralLength;
 	}
 	
 	public int getMaxCatalogNameLength() {
 		return maxCatalogNameLength;
 	}
-	public void setMaxCatalogNameLength(int maxCatalogNameLength) {
+	void setMaxCatalogNameLength(int maxCatalogNameLength) {
 		this.maxCatalogNameLength = maxCatalogNameLength;
 	}
 	
 	public int getMaxCharLiteralLength() {
 		return maxCharLiteralLength;
 	}
-	public void setMaxCharLiteralLength(int maxCharLiteralLength) {
+	void setMaxCharLiteralLength(int maxCharLiteralLength) {
 		this.maxCharLiteralLength = maxCharLiteralLength;
 	}
 	
 	public int getMaxColumnNameLength() {
 		return maxColumnNameLength;
 	}
-	public void setMaxColumnNameLength(int maxColumnNameLength) {
+	void setMaxColumnNameLength(int maxColumnNameLength) {
 		this.maxColumnNameLength = maxColumnNameLength;
 	}
 	
 	public int getMaxColumnsInGroupBy() {
 		return maxColumnsInGroupBy;
 	}
-	public void setMaxColumnsInGroupBy(int maxColumnsInGroupBy) {
+	void setMaxColumnsInGroupBy(int maxColumnsInGroupBy) {
 		this.maxColumnsInGroupBy = maxColumnsInGroupBy;
 	}
 	
 	public int getMaxColumnsInIndex() {
 		return maxColumnsInIndex;
 	}
-	public void setMaxColumnsInIndex(int maxColumnsInIndex) {
+	void setMaxColumnsInIndex(int maxColumnsInIndex) {
 		this.maxColumnsInIndex = maxColumnsInIndex;
 	}
 	
 	public int getMaxColumnsInOrderBy() {
 		return maxColumnsInOrderBy;
 	}
-	public void setMaxColumnsInOrderBy(int maxColumnsInOrderBy) {
+	void setMaxColumnsInOrderBy(int maxColumnsInOrderBy) {
 		this.maxColumnsInOrderBy = maxColumnsInOrderBy;
 	}
 	
 	public int getMaxColumnsInSelect() {
 		return maxColumnsInSelect;
 	}
-	public void setMaxColumnsInSelect(int maxColumnsInSelect) {
+	void setMaxColumnsInSelect(int maxColumnsInSelect) {
 		this.maxColumnsInSelect = maxColumnsInSelect;
 	}
 	
 	public int getMaxConnections() {
 		return maxConnections;
 	}
-	public void setMaxConnections(int maxConnections) {
+	void setMaxConnections(int maxConnections) {
 		this.maxConnections = maxConnections;
 	}
 	
 	public int getMaxColumnsInTable() {
 		return maxColumnsInTable;
 	}
-	public void setMaxColumnsInTable(int maxColumnsInTable) {
+	void setMaxColumnsInTable(int maxColumnsInTable) {
 		this.maxColumnsInTable = maxColumnsInTable;
 	}
 	
 	public int getMaxCursorNameLength() {
 		return maxCursorNameLength;
 	}
-	public void setMaxCursorNameLength(int maxCursorNameLength) {
+	void setMaxCursorNameLength(int maxCursorNameLength) {
 		this.maxCursorNameLength = maxCursorNameLength;
 	}
 	
 	public int getMaxIndexLength() {
 		return maxIndexLength;
 	}
-	public void setMaxIndexLength(int maxIndexLength) {
+	void setMaxIndexLength(int maxIndexLength) {
 		this.maxIndexLength = maxIndexLength;
 	}
 	
 	public long getMaxLogicalLobSize() {
 		return maxLogicalLobSize;
 	}
-	public void setMaxLogicalLobSize(long maxLogicalLobSize) {
+	void setMaxLogicalLobSize(long maxLogicalLobSize) {
 		this.maxLogicalLobSize = maxLogicalLobSize;
 	}
 	
 	public int getMaxProcedureNameLength() {
 		return maxProcedureNameLength;
 	}
-	public void setMaxProcedureNameLength(int maxProcedureNameLength) {
+	void setMaxProcedureNameLength(int maxProcedureNameLength) {
 		this.maxProcedureNameLength = maxProcedureNameLength;
 	}
 	
 	public int getMaxRowSize() {
 		return maxRowSize;
 	}
-	public void setMaxRowSize(int maxRowSize) {
+	void setMaxRowSize(int maxRowSize) {
 		this.maxRowSize = maxRowSize;
 	}
 	
 	public int getMaxSchemaNameLength() {
 		return maxSchemaNameLength;
 	}
-	public void setMaxSchemaNameLength(int maxSchemaNameLength) {
+	void setMaxSchemaNameLength(int maxSchemaNameLength) {
 		this.maxSchemaNameLength = maxSchemaNameLength;
 	}
 	
 	public int getMaxStatementLength() {
 		return maxStatementLength;
 	}
-	public void setMaxStatementLength(int maxStatementLength) {
+	void setMaxStatementLength(int maxStatementLength) {
 		this.maxStatementLength = maxStatementLength;
 	}
 	
 	public int getMaxStatements() {
 		return maxStatements;
 	}
-	public void setMaxStatements(int maxStatements) {
+	void setMaxStatements(int maxStatements) {
 		this.maxStatements = maxStatements;
 	}
 	
 	public int getMaxTableNameLength() {
 		return maxTableNameLength;
 	}
-	public void setMaxTableNameLength(int maxTableNameLength) {
+	void setMaxTableNameLength(int maxTableNameLength) {
 		this.maxTableNameLength = maxTableNameLength;
 	}
 	
 	public int getMaxTablesInSelect() {
 		return maxTablesInSelect;
 	}
-	public void setMaxTablesInSelect(int maxTablesInSelect) {
+	void setMaxTablesInSelect(int maxTablesInSelect) {
 		this.maxTablesInSelect = maxTablesInSelect;
 	}
 	
 	public int getMaxUserNameLength() {
 		return maxUserNameLength;
 	}
-	public void setMaxUserNameLength(int maxUserNameLength) {
+	void setMaxUserNameLength(int maxUserNameLength) {
 		this.maxUserNameLength = maxUserNameLength;
 	}
 	
 	public Set<String> getNumericFunctions() {
-		return numericFunctions;
+		return Collections.unmodifiableSet(numericFunctions);
 	}
-	public void setNumericFunctions(Set<String> numericFunctions) {
-		this.numericFunctions = numericFunctions;
+	void addToNumericFunctions(String numericFunction) {
+		this.numericFunctions.add(numericFunction);
+	}
+	void addAllToNumericFunctions(Collection<String> numericFunctions) {
+		this.numericFunctions.addAll(numericFunctions);
 	}
 	
 	public Set<String> getSqlKeywords() {
-		return sqlKeywords;
+		return Collections.unmodifiableSet(sqlKeywords);
 	}
-	public void setSqlKeywords(Set<String> sqlKeywords) {
-		this.sqlKeywords = sqlKeywords;
+	void addToSqlKeywords(String sqlKeyword) {
+		this.sqlKeywords.add(sqlKeyword);
+	}
+	void addAllToSqlKeywords(Collection<String> sqlKeywords) {
+		this.sqlKeywords.addAll(sqlKeywords);
 	}
 	
 	public String getProcedureTerm() {
 		return procedureTerm;
 	}
-	public void setProcedureTerm(String procedureTerm) {
+	void setProcedureTerm(String procedureTerm) {
 		this.procedureTerm = procedureTerm;
 	}
 	
 	public Set<SchemaDetails> getSchemas() {
-		return schemas;
+		return Collections.unmodifiableSet(schemas);
 	}
-	public void setSchemas(Set<SchemaDetails> schemas) {
-		this.schemas = schemas;
+	void addToSchemas(SchemaDetails schema) {
+		this.schemas.add(schema);
 	}
 	
 	public String getSchemaTerm() {
 		return schemaTerm;
 	}
-	public void setSchemaTerm(String schemaTerm) {
+	void setSchemaTerm(String schemaTerm) {
 		this.schemaTerm = schemaTerm;
 	}
 	
 	public String getSearchStringEscape() {
 		return searchStringEscape;
 	}
-	public void setSearchStringEscape(String searchStringEscape) {
+	void setSearchStringEscape(String searchStringEscape) {
 		this.searchStringEscape = searchStringEscape;
 	}
 	
 	public Set<String> getStringFunctions() {
-		return stringFunctions;
+		return Collections.unmodifiableSet(stringFunctions);
 	}
-	public void setStringFunctions(Set<String> stringFunctions) {
-		this.stringFunctions = stringFunctions;
+	void addToStringFunctions(String stringFunction) {
+		this.stringFunctions.add(stringFunction);
+	}
+	void addAllToStringFunctions(Collection<String> stringFunctions) {
+		this.stringFunctions.addAll(stringFunctions);
 	}
 	
 	public Set<String> getSystemFunctions() {
-		return systemFunctions;
+		return Collections.unmodifiableSet(systemFunctions);
 	}
-	public void setSystemFunctions(Set<String> systemFunctions) {
-		this.systemFunctions = systemFunctions;
+	void addToSystemFunctions(String systemFunction) {
+		this.systemFunctions.add(systemFunction);
+	}
+	void addAllToSystemFunctions(Collection<String> systemFunctions) {
+		this.systemFunctions.addAll(systemFunctions);
 	}
 	
 	public Set<String> getTimeDateFunctions() {
-		return timeDateFunctions;
+		return Collections.unmodifiableSet(timeDateFunctions);
 	}
-	public void setTimeDateFunctions(Set<String> timeDateFunctions) {
-		this.timeDateFunctions = timeDateFunctions;
+	void addToTimeDateFunctions(String timeDateFunction) {
+		this.timeDateFunctions.add(timeDateFunction);
+	}
+	void addAllToTimeDateFunctions(Collection<String> timeDateFunctions) {
+		this.timeDateFunctions.addAll(timeDateFunctions);
 	}
 	
 	public Set<String> getTableTypes() {
-		return tableTypes;
+		return Collections.unmodifiableSet(tableTypes);
 	}
-	public void setTableTypes(Set<String> tableTypes) {
-		this.tableTypes = tableTypes;
+	void addToTableTypes(String tableType) {
+		this.tableTypes.add(tableType);
 	}
 	
 	public Set<TypeInfo> getTypeInfos() {
-		return typeInfos;
+		return Collections.unmodifiableSet(typeInfos);
 	}
-	public void setTypeInfos(Set<TypeInfo> typeInfos) {
-		this.typeInfos = typeInfos;
+	void addToTypeInfos(TypeInfo typeInfo) {
+		this.typeInfos.add(typeInfo);
 	}
 	
 	public String getUrl() {
 		return url;
 	}
-	public void setUrl(String url) {
+	void setUrl(String url) {
 		this.url = url;
 	}
 	
 	public String getUserName() {
 		return userName;
 	}
-	public void setUserName(String userName) {
+	void setUserName(String userName) {
 		this.userName = userName;
 	}
 	
 	public Set<TableDetails> getTableDetails() {
-		return tableDetails;
+		return Collections.unmodifiableSet(tableDetails);
 	}
-	public void setTableDetails(Set<TableDetails> tableDetails) {
-		this.tableDetails = tableDetails;
+	void addToTableDetails(TableDetails tableDetail) {
+		this.tableDetails.add(tableDetail);
 	}
 	
 	public Set<Attribute> getAttributes() {
-		return attributes;
+		return Collections.unmodifiableSet(attributes);
 	}
-	public void setAttributes(Set<Attribute> attributes) {
-		this.attributes = attributes;
+	void addToAttributes(Attribute attribute) {
+		this.attributes.add(attribute);
 	}
 	
 	public Set<Column> getColumns() {
-		return columns;
+		return Collections.unmodifiableSet(columns);
 	}
-	public void setColumns(Set<Column> columns) {
-		this.columns = columns;
+	void addToColumns(Column column) {
+		this.columns.add(column);
 	}
 	
 	public Set<ColumnPrivilege> getColumnPrivileges() {
-		return columnPrivileges;
+		return Collections.unmodifiableSet(columnPrivileges);
 	}
-	public void setColumnPrivileges(Set<ColumnPrivilege> columnPrivileges) {
-		this.columnPrivileges = columnPrivileges;
+	void addToColumnPrivileges(ColumnPrivilege columnPrivilege) {
+		this.columnPrivileges.add(columnPrivilege);
 	}
 	
 	public Set<TablePrivilege> getTablePrivileges() {
-		return tablePrivileges;
+		return Collections.unmodifiableSet(tablePrivileges);
 	}
-	public void setTablePrivileges(Set<TablePrivilege> tablePrivileges) {
-		this.tablePrivileges = tablePrivileges;
+	void addToTablePrivileges(TablePrivilege tablePrivilege) {
+		this.tablePrivileges.add(tablePrivilege);
 	}
 	
 	public Set<PseudoColumn> getPseudoColumns() {
-		return pseudoColumns;
+		return Collections.unmodifiableSet(pseudoColumns);
 	}
-	public void setPseudoColumns(Set<PseudoColumn> pseudoColumns) {
-		this.pseudoColumns = pseudoColumns;
+	void addToPseudoColumns(PseudoColumn pseudoColumn) {
+		this.pseudoColumns.add(pseudoColumn);
 	}
 	
 	public Set<FunctionColumn> getFunctionColumns() {
-		return functionColumns;
+		return Collections.unmodifiableSet(functionColumns);
 	}
-	public void setFunctionColumns(Set<FunctionColumn> functionColumns) {
-		this.functionColumns = functionColumns;
+	void addToFunctionColumns(FunctionColumn functionColumn) {
+		this.functionColumns.add(functionColumn);
 	}
 	
 	public Set<ProcedureColumn> getProcedureColumns() {
-		return procedureColumns;
+		return Collections.unmodifiableSet(procedureColumns);
 	}
-	public void setProcedureColumns(Set<ProcedureColumn> procedureColumns) {
-		this.procedureColumns = procedureColumns;
+	void addToProcedureColumns(ProcedureColumn procedureColumn) {
+		this.procedureColumns.add(procedureColumn);
 	}
 	
 	public Set<VersionColumn> getVersionColumns() {
-		return versionColumns;
+		return Collections.unmodifiableSet(versionColumns);
 	}
-	public void setVersionColumns(Set<VersionColumn> versionColumns) {
-		this.versionColumns = versionColumns;
+	void addToVersionColumns(VersionColumn versionColumn) {
+		this.versionColumns.add(versionColumn);
 	}
 	
 	public Set<ImportedKey> getImportedKeys() {
-		return importedKeys;
+		return Collections.unmodifiableSet(importedKeys);
 	}
-	public void setImportedKeys(Set<ImportedKey> importedKeys) {
-		this.importedKeys = importedKeys;
+	void addToImportedKeys(ImportedKey importedKey) {
+		this.importedKeys.add(importedKey);
 	}
 	
 	public Set<ExportedKey> getExportedKeys() {
-		return exportedKeys;
+		return Collections.unmodifiableSet(exportedKeys);
 	}
-	public void setExportedKeys(Set<ExportedKey> exportedKeys) {
-		this.exportedKeys = exportedKeys;
+	void addToExportedKeys(ExportedKey exportedKey) {
+		this.exportedKeys.add(exportedKey);
 	}
 	
 	public Set<Function> getFunctions() {
-		return functions;
+		return Collections.unmodifiableSet(functions);
 	}
-	public void setFunctions(Set<Function> functions) {
-		this.functions = functions;
+	void addToFunctions(Function function) {
+		this.functions.add(function);
 	}
 	
 	public Set<UserDefinedType> getUserDefinedTypes() {
-		return userDefinedTypes;
+		return Collections.unmodifiableSet(userDefinedTypes);
 	}
-	public void setUserDefinedTypes(Set<UserDefinedType> userDefinedTypes) {
-		this.userDefinedTypes = userDefinedTypes;
+	void addToUserDefinedTypes(UserDefinedType userDefinedType) {
+		this.userDefinedTypes.add(userDefinedType);
 	}
 	
 	public Set<BestRowIdentifier> getBestRowIdentifiers() {
-		return bestRowIdentifiers;
+		return Collections.unmodifiableSet(bestRowIdentifiers);
 	}
-	public void setBestRowIdentifiers(Set<BestRowIdentifier> bestRowIdentifiers) {
-		this.bestRowIdentifiers = bestRowIdentifiers;
+	void addToBestRowIdentifiers(BestRowIdentifier bestRowIdentifier) {
+		this.bestRowIdentifiers.add(bestRowIdentifier);
 	}
 	
 	public Set<CrossReference> getCrossReferences() {
-		return crossReferences;
+		return Collections.unmodifiableSet(crossReferences);
 	}
-	public void setCrossReferences(Set<CrossReference> crossReferences) {
-		this.crossReferences = crossReferences;
+	void addToCrossReferences(CrossReference crossReference) {
+		this.crossReferences.add(crossReference);
 	}
 	
 	public Set<PrimaryKey> getPrimaryKeys() {
-		return primaryKeys;
+		return Collections.unmodifiableSet(primaryKeys);
 	}
-	public void setPrimaryKeys(Set<PrimaryKey> primaryKeys) {
-		this.primaryKeys = primaryKeys;
+	void addToPrimaryKeys(PrimaryKey primaryKey) {
+		this.primaryKeys.add(primaryKey);
 	}
 	
 	public Set<IndexInfo> getIndexInfos() {
-		return indexInfos;
+		return Collections.unmodifiableSet(indexInfos);
 	}
-	public void setIndexInfos(Set<IndexInfo> indexInfos) {
-		this.indexInfos = indexInfos;
+	void addToIndexInfos(IndexInfo indexInfo) {
+		this.indexInfos.add(indexInfo);
 	}
 	
 	public Set<Procedure> getProcedures() {
-		return procedures;
+		return Collections.unmodifiableSet(procedures);
 	}
-	public void setProcedures(Set<Procedure> procedures) {
-		this.procedures = procedures;
+	void addToProcedures(Procedure procedure) {
+		this.procedures.add(procedure);
 	}
 	
 	public Set<SuperTable> getSuperTables() {
-		return superTables;
+		return Collections.unmodifiableSet(superTables);
 	}
-	public void setSuperTables(Set<SuperTable> superTables) {
-		this.superTables = superTables;
+	void addToSuperTables(SuperTable superTable) {
+		this.superTables.add(superTable);
 	}
 	
 	public Set<SuperType> getSuperTypes() {
-		return superTypes;
+		return Collections.unmodifiableSet(superTypes);
 	}
-	public void setSuperTypes(Set<SuperType> superTypes) {
-		this.superTypes = superTypes;
+	void addToSuperTypes(SuperType superType) {
+		this.superTypes.add(superType);
 	}
 }

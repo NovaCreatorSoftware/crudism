@@ -9,28 +9,28 @@ public class ClientInfo {
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
+	void setName(String name) {
 		this.name = name;
 	}
 	
 	public int getMaxLength() {
 		return maxLength;
 	}
-	public void setMaxLength(int maxLength) {
+	void setMaxLength(int maxLength) {
 		this.maxLength = maxLength;
 	}
 	
 	public String getDefaultValue() {
 		return defaultValue;
 	}
-	public void setDefaultValue(String defaultValue) {
+	void setDefaultValue(String defaultValue) {
 		this.defaultValue = defaultValue;
 	}
 	
 	public String getDescription() {
 		return description;
 	}
-	public void setDescription(String description) {
+	void setDescription(String description) {
 		this.description = description;
 	}
 }
