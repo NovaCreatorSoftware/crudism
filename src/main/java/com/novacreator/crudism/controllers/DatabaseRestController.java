@@ -5,11 +5,7 @@ import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.util.Arrays;
 import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 import java.util.Properties;
-import java.util.Set;
 
 import javax.sql.DataSource;
 
