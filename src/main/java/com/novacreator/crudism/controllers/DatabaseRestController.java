@@ -30,303 +30,6 @@ public class DatabaseRestController {
 	@Autowired
 	private DataSource datasource;
 	
-	class ClientInfo {
-		private String name;
-		private int maxLength;
-		private String defaultValue;
-		private String description;
-	}
-	
-	class DatabaseDetails {
-		String currentCatalog;
-		Map<String, String> clientInfo = new HashMap<>();
-		String schema;
-		String identifierQuote;
-		Set<String> catalogs = new HashSet<>();
-		String catalogSeparator;
-		String catalogTerm;
-		Set<ClientInfo> metadataClientInfo = new HashSet<>();
-		int databaseMajorVersion;
-		int databaseMinorVersion;
-		public String databaseProductName;
-		public String databaseProductVersion;
-		public int defaultTransactionIsolation;
-		public int driverMajorVersion;
-		public int driverMinorVersion;
-		public String driverName;
-		public String driverVersion;
-		public int jdbcMajorVersion;
-		public int jdbcMinorVersion;
-		public int maxBinaryLiteralLength;
-		public int maxCatalogNameLength;
-		public int maxCharLiteralLength;
-		public int maxColumnNameLength;
-		public int maxColumnsInGroupBy;
-		public int maxColumnsInIndex;
-		public int maxColumnsInOrderBy;
-		public int maxColumnsInSelect;
-		public int maxConnections;
-		public int maxColumnsInTable;
-		public int maxCursorNameLength;
-		public int maxIndexLength;
-		public long maxLogicalLobSize;
-		public int maxProcedureNameLength;
-		public int maxRowSize;
-		public int maxSchemaNameLength;
-		public int maxStatementLength;
-		public int maxStatements;
-		public int maxTableNameLength;
-		public int maxTablesInSelect;
-		public int maxUserNameLength;
-		Set<String> numericFunctions = new HashSet<>();
-		Set<String> sqlKeywords = new HashSet<>();
-		public String procedureTerm;
-		Set<SchemaDetails> schemas = new HashSet<>();
-		public String schemaTerm;
-		public String searchStringEscape;
-		Set<String> stringFunctions = new HashSet<>();
-		Set<String> systemFunctions = new HashSet<>();
-		Set<String> timeDateFunctions = new HashSet<>();
-		Set<String> tableTypes = new HashSet<>();
-		Set<TypeInfo> typeInfos = new HashSet<>();
-		String url;
-		String userName;
-		Set<TableDetails> tableDetails = new HashSet<>();
-		Set<Attribute> attributes = new HashSet<>();
-		Set<Column> columns = new HashSet<>();
-		Set<ColumnPrivilege> columnPrivileges = new HashSet<>();
-		Set<TablePrivilege> tablePrivileges = new HashSet<>();
-		Set<PseudoColumn> pseudoColumns = new HashSet<>();
-		Set<FunctionColumn> functionColumns = new HashSet<>();
-		Set<ProcedureColumn> procedureColumns = new HashSet<>();
-		Set<VersionColumn> versionColumns = new HashSet<>();
-		Set<ImportedKey> importedKeys = new HashSet<>();
-		Set<ExportedKey> exportedKeys = new HashSet<>();
-		Set<Function> functions = new HashSet<>();
-		Set<UserDefinedType> userDefinedTypes = new HashSet<>();
-	}
-	
-	class TypeInfo {
-		String typeName;
-		String dataType;
-		int precission;
-		String literalPrefix;
-		String literalSuffix;
-		String createParams;
-		short nullable;
-		boolean caseSensitive;
-		boolean searchable;
-		boolean unsignedAttribute;
-		boolean fixedPrecissionScale;
-		boolean autoIncrement;
-		String localTypeName;
-		short minimumScale;
-		short maximumScale;
-		int numberPrecissionRadix;
-	}
-	
-	class SchemaDetails {
-		String schemaName;
-		String catalogName;
-	}
-	
-	class TableDetails {
-		String catalog;
-		String schema;
-		String name;
-		String type;
-		String remarks;
-		String typeCatalog;
-		String typeSchema;
-		String typeName;
-		String selfReferencingColumnName;
-		String referenceGeneration;		
-	}
-	
-	class Attribute {
-		String typeCatalog;
-		String typeSchema;
-		String typeName;
-		String attributeName;
-		int dataType;
-		String attributeTypeName;
-		int attributeSize;
-		int decimalDigits;
-		int numberPrecissionRadix;
-		int nullable;
-		String remarks;
-		String attributeDefinition;
-		int charOctetLength;
-		int ordinalPosition;
-		String isNullable;
-		String scopeCatalog;
-		String scopeSchema;
-		String scopeTable;
-		short sourceDataType;		
-	}
-	
-	class TablePrivilege {
-		public String tableCatalog;
-		public String tableSchema;
-		public String tableName;
-		public String grantor;
-		public String grantee;
-		public String privilege;
-		public String isGrantable;
-	}
-	
-	class Column {
-		public String tableCatalog;
-		public String tableSchema;
-		public String tableName;
-		public String name;
-		public int dataType;
-		public String typeName;
-		public int columnSize;
-		public int decimalDigits;
-		public int numberPrecissionRadix;
-		public int nullable;
-		public String remarks;
-		public String columnDefinition;
-		public int charOctetLength;
-		public int ordinalPosition;
-		public String isNullable;
-		public String scopeCatalog;
-		public String scopeSchema;
-		public String scopeTable;
-		public short sourceDataType;
-		public String isAutoincrement;
-		public String isGeneratedColumn;
-	}
-	
-	class Function {
-
-		public String functionCatalog;
-		public String functionSchema;
-		public String functionName;
-		public String remarks;
-		public short functionType;
-		public String specificName;}
-	
-	class FunctionColumn {
-		public String functionCatalog;
-		public String functionSchema;
-		public String functionName;
-		public String columnName;
-		public short columnType;
-		public int dataType;
-		public String typeName;
-		public int precision;
-		public int length;
-		public short scale;
-		public short radix;
-		public short nullable;
-	}
-	
-	class ProcedureColumn {
-		public String procedureCatalog;
-		public String procedureSchema;
-		public String procedureName;
-		public String columnName;
-		public short columnType;
-		public int dataType;
-		public String typeName;
-		public int precission;
-		public int length;
-		public short scale;
-		public short radix;
-		public short nullable;
-		public String remarks;
-		public String columnDefaultValue;
-		public int charOctetLength;
-		public int ordinalPosition;
-		public String isNullable;
-		public String specificName;
-	}
-	
-	class VersionColumn {
-		public short scope;
-		public String columnName;
-		public int dataType;
-		public String typeName;
-		public int columnSize;
-		public int bufferLength;
-		public int decimalDigits;
-		public short pseudoColumn;
-	}
-	
-	class ColumnPrivilege {
-		public String tableCatalog;
-		public String tableSchema;
-		public String tableName;
-		public String columnName;
-		public String grantor;
-		public String grantee;
-		public String privilege;
-		public String isGrantable;
-	}
-	
-	class PseudoColumn {
-		public String tableCatalog;
-		public String tableSchema;
-		public String tableName;
-		public String columnName;
-		public int dataType;
-		public int columnSize;
-		public int decimalDigits;
-		public int numberPrecissionRadix;
-		public String columnUsage;
-		public String remarks;
-		public int charOctetLength;
-		public String isNullable;
-	}
-	
-	class ImportedKey {
-		public String primaryKeyTableCatalog;
-		public String primaryKeyTableSchema;
-		public String primaryKeyTableName;
-		public String primaryKeyColumnName;
-		public String foreignKeyTableCatalog;
-		public String foreignKeyTableSchema;
-		public String foreignKeyTableName;
-		public String foreignKeyColumnName;
-		public short keySequenceNumber;
-		public short updateRule;
-		public short deleteRule;
-		public String foreignKeyName;
-		public String primaryKeyName;
-		public short deferrability;
-	}
-	
-	class ExportedKey {
-		public String primaryKeyTableCatalog;
-		public String primaryKeyTableSchema;
-		public String primaryKeyTableName;
-		public String primaryKeyColumnName;
-		public String foreignKeyTableCatalog;
-		public String foreignKeyTableSchema;
-		public String foreignKeyTableName;
-		public String foreignKeyColumnName;
-		public short keySequenceNumber;
-		public short updateRule;
-		public short deleteRule;
-		public String foreignKeyName;
-		public String primaryKeyName;
-		public short deferrability;
-	}
-	
-	class UserDefinedType {
-
-		public String typeCatalog;
-		public String typeSchema;
-		public String typeName;
-		public String classNmae;
-		public int dataType;
-		public short baseType;
-		public String remarks;
-		
-	}
-	
 	@Loggable(value = Loggable.INFO, name = "DatabaseRestController", trim = false)
 	@RequestMapping("/services/database/list")
 	public ResponseEntity<String> getDatabase() {
@@ -353,10 +56,10 @@ public class DatabaseRestController {
 			ResultSet clientInfoPropertiesResultSet = metadata.getClientInfoProperties();
 			while(clientInfoPropertiesResultSet.next()) {
 				ClientInfo clientInfo = new ClientInfo();
-				clientInfo.name = clientInfoPropertiesResultSet.getString(1);
-				clientInfo.maxLength = clientInfoPropertiesResultSet.getInt(1);
-				clientInfo.defaultValue = clientInfoPropertiesResultSet.getString(2);
-				clientInfo.description = clientInfoPropertiesResultSet.getString(3);
+				clientInfo.data.name = clientInfoPropertiesResultSet.getString(1);
+				clientInfo.data.maxLength = clientInfoPropertiesResultSet.getInt(1);
+				clientInfo.data.defaultValue = clientInfoPropertiesResultSet.getString(2);
+				clientInfo.data.description = clientInfoPropertiesResultSet.getString(3);
 				databaseDetails.metadataClientInfo.add(clientInfo);
 			}
 			databaseDetails.databaseMajorVersion = metadata.getDatabaseMajorVersion();
@@ -400,15 +103,15 @@ public class DatabaseRestController {
 			ResultSet schemasResultSet = metadata.getSchemas();
 			while(schemasResultSet.next()) {
 				SchemaDetails schemaDetails = new SchemaDetails();
-				schemaDetails.schemaName = schemasResultSet.getString(1);
-				schemaDetails.catalogName = schemasResultSet.getString(2);
+				schemaDetails.data.schemaName = schemasResultSet.getString(1);
+				schemaDetails.data.catalogName = schemasResultSet.getString(2);
 				databaseDetails.schemas.add(schemaDetails);
 			}
 			ResultSet schemaInfoResultSet = metadata.getSchemas(null, null);
 			while(schemaInfoResultSet.next()) {
 				SchemaDetails schemaDetails = new SchemaDetails();
-				schemaDetails.schemaName = schemasResultSet.getString(1);
-				schemaDetails.catalogName = schemasResultSet.getString(2);
+				schemaDetails.data.schemaName = schemasResultSet.getString(1);
+				schemaDetails.data.catalogName = schemasResultSet.getString(2);
 				databaseDetails.schemas.add(schemaDetails);
 			}
 			
@@ -461,244 +164,332 @@ public class DatabaseRestController {
 			ResultSet tablesResultSet = metadata.getTables(null, null, null, null);
 			while(tablesResultSet.next()) {
 				TableDetails tableDetails = new TableDetails();
-				tableDetails.catalog = tablesResultSet.getString(1);
-				tableDetails.schema = tablesResultSet.getString(2);
-				tableDetails.name = tablesResultSet.getString(3);
-				tableDetails.type = tablesResultSet.getString(4);
-				tableDetails.remarks = tablesResultSet.getString(5);
-				tableDetails.typeCatalog = tablesResultSet.getString(6);
-				tableDetails.typeSchema = tablesResultSet.getString(7);
-				tableDetails.typeName = tablesResultSet.getString(8);
-				tableDetails.selfReferencingColumnName = tablesResultSet.getString(9);
-				tableDetails.referenceGeneration = tablesResultSet.getString(10);
+				tableDetails.data.catalog = tablesResultSet.getString(1);
+				tableDetails.data.schema = tablesResultSet.getString(2);
+				tableDetails.data.name = tablesResultSet.getString(3);
+				tableDetails.data.type = tablesResultSet.getString(4);
+				tableDetails.data.remarks = tablesResultSet.getString(5);
+				tableDetails.data.typeCatalog = tablesResultSet.getString(6);
+				tableDetails.data.typeSchema = tablesResultSet.getString(7);
+				tableDetails.data.typeName = tablesResultSet.getString(8);
+				tableDetails.data.selfReferencingColumnName = tablesResultSet.getString(9);
+				tableDetails.data.referenceGeneration = tablesResultSet.getString(10);
 				databaseDetails.tableDetails.add(tableDetails);
 			}
 			ResultSet attributesResultSet = metadata.getAttributes(null, null, null, null);
 			while(attributesResultSet.next()) {
 				Attribute attribute = new Attribute();
-				attribute.typeSchema = attributesResultSet.getString(1);
-				attribute.typeCatalog = attributesResultSet.getString(2);
-				attribute.typeName =  attributesResultSet.getString(3);
-				attribute.attributeName = attributesResultSet.getString(4);
-				attribute.dataType = attributesResultSet.getInt(5);
-				attribute.attributeTypeName = attributesResultSet.getString(6);
-				attribute.attributeSize = attributesResultSet.getInt(7);
-				attribute.decimalDigits = attributesResultSet.getInt(8);
-				attribute.numberPrecissionRadix = attributesResultSet.getInt(9);
-				attribute.nullable = attributesResultSet.getInt(10);
-				attribute.remarks = attributesResultSet.getString(11);
-				attribute.attributeDefinition = attributesResultSet.getString(12);
-				attribute.charOctetLength = attributesResultSet.getInt(15);
-				attribute.ordinalPosition = attributesResultSet.getInt(16);
-				attribute.isNullable = attributesResultSet.getString(17);
-				attribute.scopeCatalog = attributesResultSet.getString(18);
-				attribute.scopeSchema = attributesResultSet.getString(19);
-				attribute.scopeTable = attributesResultSet.getString(20);
-				attribute.sourceDataType = attributesResultSet.getShort(21);
+				attribute.data.typeSchema = attributesResultSet.getString(1);
+				attribute.data.typeCatalog = attributesResultSet.getString(2);
+				attribute.data.typeName =  attributesResultSet.getString(3);
+				attribute.data.attributeName = attributesResultSet.getString(4);
+				attribute.data.dataType = attributesResultSet.getInt(5);
+				attribute.data.attributeTypeName = attributesResultSet.getString(6);
+				attribute.data.attributeSize = attributesResultSet.getInt(7);
+				attribute.data.decimalDigits = attributesResultSet.getInt(8);
+				attribute.data.numberPrecissionRadix = attributesResultSet.getInt(9);
+				attribute.data.nullable = attributesResultSet.getInt(10);
+				attribute.data.remarks = attributesResultSet.getString(11);
+				attribute.data.attributeDefinition = attributesResultSet.getString(12);
+				attribute.data.charOctetLength = attributesResultSet.getInt(15);
+				attribute.data.ordinalPosition = attributesResultSet.getInt(16);
+				attribute.data.isNullable = attributesResultSet.getString(17);
+				attribute.data.scopeCatalog = attributesResultSet.getString(18);
+				attribute.data.scopeSchema = attributesResultSet.getString(19);
+				attribute.data.scopeTable = attributesResultSet.getString(20);
+				attribute.data.sourceDataType = attributesResultSet.getShort(21);
 				databaseDetails.attributes.add(attribute);
 			}
 			
 			ResultSet columnsResultSet = metadata.getColumns(null, null, null, null);
 			while(columnsResultSet.next()) {
 				Column column = new Column();
-				column.tableCatalog = columnsResultSet.getString(1);
-				column.tableSchema = columnsResultSet.getString(2);
-				column.tableName = columnsResultSet.getString(3);
-				column.name = columnsResultSet.getString(4);
-				column.dataType = columnsResultSet.getInt(5);
-				column.typeName = columnsResultSet.getString(6);
-				column.columnSize = columnsResultSet.getInt(7);
-				column.decimalDigits = columnsResultSet.getInt(9);
-				column.numberPrecissionRadix = columnsResultSet.getInt(10);
-				column.nullable = columnsResultSet.getInt(11);
-				column.remarks = columnsResultSet.getString(12);
-				column.columnDefinition = columnsResultSet.getString(13);
-				column.charOctetLength = columnsResultSet.getInt(16);
-				column.ordinalPosition = columnsResultSet.getInt(17);
-				column.isNullable = columnsResultSet.getString(18);
-				column.scopeCatalog = columnsResultSet.getString(19);
-				column.scopeSchema = columnsResultSet.getString(20);
-				column.scopeTable = columnsResultSet.getString(21);
-				column.sourceDataType = columnsResultSet.getShort(22);
-				column.isAutoincrement = columnsResultSet.getString(23);
-				column.isGeneratedColumn = columnsResultSet.getString(24);
+				column.data.tableCatalog = columnsResultSet.getString(1);
+				column.data.tableSchema = columnsResultSet.getString(2);
+				column.data.tableName = columnsResultSet.getString(3);
+				column.data.name = columnsResultSet.getString(4);
+				column.data.dataType = columnsResultSet.getInt(5);
+				column.data.typeName = columnsResultSet.getString(6);
+				column.data.columnSize = columnsResultSet.getInt(7);
+				column.data.decimalDigits = columnsResultSet.getInt(9);
+				column.data.numberPrecissionRadix = columnsResultSet.getInt(10);
+				column.data.nullable = columnsResultSet.getInt(11);
+				column.data.remarks = columnsResultSet.getString(12);
+				column.data.columnDefinition = columnsResultSet.getString(13);
+				column.data.charOctetLength = columnsResultSet.getInt(16);
+				column.data.ordinalPosition = columnsResultSet.getInt(17);
+				column.data.isNullable = columnsResultSet.getString(18);
+				column.data.scopeCatalog = columnsResultSet.getString(19);
+				column.data.scopeSchema = columnsResultSet.getString(20);
+				column.data.scopeTable = columnsResultSet.getString(21);
+				column.data.sourceDataType = columnsResultSet.getShort(22);
+				column.data.isAutoincrement = columnsResultSet.getString(23);
+				column.data.isGeneratedColumn = columnsResultSet.getString(24);
 				databaseDetails.columns.add(column);
 			}
 			
 			ResultSet tablePrivilegesResultSet = metadata.getTablePrivileges(null, null, null);
 			while(tablePrivilegesResultSet.next()) {
 				TablePrivilege tablePrivilege = new TablePrivilege();
-				tablePrivilege.tableCatalog = tablePrivilegesResultSet.getString(1);
-				tablePrivilege.tableSchema = tablePrivilegesResultSet.getString(2);
-				tablePrivilege.tableName = tablePrivilegesResultSet.getString(3);
-				tablePrivilege.grantor = tablePrivilegesResultSet.getString(5);
-				tablePrivilege.grantee = tablePrivilegesResultSet.getString(6);
-				tablePrivilege.privilege = tablePrivilegesResultSet.getString(7);
-				tablePrivilege.isGrantable = tablePrivilegesResultSet.getString(8);
+				tablePrivilege.data.tableCatalog = tablePrivilegesResultSet.getString(1);
+				tablePrivilege.data.tableSchema = tablePrivilegesResultSet.getString(2);
+				tablePrivilege.data.tableName = tablePrivilegesResultSet.getString(3);
+				tablePrivilege.data.grantor = tablePrivilegesResultSet.getString(5);
+				tablePrivilege.data.grantee = tablePrivilegesResultSet.getString(6);
+				tablePrivilege.data.privilege = tablePrivilegesResultSet.getString(7);
+				tablePrivilege.data.isGrantable = tablePrivilegesResultSet.getString(8);
 				databaseDetails.tablePrivileges.add(tablePrivilege);				
 			}
 			
 			ResultSet columnPrivilegesResultSet = metadata.getColumnPrivileges(null, null, null, null);
 			while(columnPrivilegesResultSet.next()) {
 				ColumnPrivilege columnPrivilege = new ColumnPrivilege();
-				columnPrivilege.tableCatalog = columnPrivilegesResultSet.getString(1);
-				columnPrivilege.tableSchema = columnPrivilegesResultSet.getString(2);
-				columnPrivilege.tableName = columnPrivilegesResultSet.getString(3);
-				columnPrivilege.columnName = columnPrivilegesResultSet.getString(4);
-				columnPrivilege.grantor = columnPrivilegesResultSet.getString(5);
-				columnPrivilege.grantee = columnPrivilegesResultSet.getString(6);
-				columnPrivilege.privilege = columnPrivilegesResultSet.getString(7);
-				columnPrivilege.isGrantable = columnPrivilegesResultSet.getString(8);
+				columnPrivilege.data.tableCatalog = columnPrivilegesResultSet.getString(1);
+				columnPrivilege.data.tableSchema = columnPrivilegesResultSet.getString(2);
+				columnPrivilege.data.tableName = columnPrivilegesResultSet.getString(3);
+				columnPrivilege.data.columnName = columnPrivilegesResultSet.getString(4);
+				columnPrivilege.data.grantor = columnPrivilegesResultSet.getString(5);
+				columnPrivilege.data.grantee = columnPrivilegesResultSet.getString(6);
+				columnPrivilege.data.privilege = columnPrivilegesResultSet.getString(7);
+				columnPrivilege.data.isGrantable = columnPrivilegesResultSet.getString(8);
 				databaseDetails.columnPrivileges.add(columnPrivilege);
 			}
 			
 			ResultSet pseudoColumnsResultSet = metadata.getPseudoColumns(null, null, null, null);
 			while(pseudoColumnsResultSet.next()) {
 				PseudoColumn pseudoColumn = new PseudoColumn();
-				pseudoColumn.tableCatalog = pseudoColumnsResultSet.getString(1);
-				pseudoColumn.tableSchema = pseudoColumnsResultSet.getString(2);
-				pseudoColumn.tableName = pseudoColumnsResultSet.getString(3);
-				pseudoColumn.columnName = pseudoColumnsResultSet.getString(4);
-				pseudoColumn.dataType = pseudoColumnsResultSet.getInt(5);
-				pseudoColumn.columnSize = pseudoColumnsResultSet.getInt(6);
-				pseudoColumn.decimalDigits = pseudoColumnsResultSet.getInt(7);
-				pseudoColumn.numberPrecissionRadix = pseudoColumnsResultSet.getInt(8);
-				pseudoColumn.columnUsage = pseudoColumnsResultSet.getString(9);
-				pseudoColumn.remarks = pseudoColumnsResultSet.getString(10);
-				pseudoColumn.charOctetLength = pseudoColumnsResultSet.getInt(11);
-				pseudoColumn.isNullable = pseudoColumnsResultSet.getString(12);
+				pseudoColumn.data.tableCatalog = pseudoColumnsResultSet.getString(1);
+				pseudoColumn.data.tableSchema = pseudoColumnsResultSet.getString(2);
+				pseudoColumn.data.tableName = pseudoColumnsResultSet.getString(3);
+				pseudoColumn.data.columnName = pseudoColumnsResultSet.getString(4);
+				pseudoColumn.data.dataType = pseudoColumnsResultSet.getInt(5);
+				pseudoColumn.data.columnSize = pseudoColumnsResultSet.getInt(6);
+				pseudoColumn.data.decimalDigits = pseudoColumnsResultSet.getInt(7);
+				pseudoColumn.data.numberPrecissionRadix = pseudoColumnsResultSet.getInt(8);
+				pseudoColumn.data.columnUsage = pseudoColumnsResultSet.getString(9);
+				pseudoColumn.data.remarks = pseudoColumnsResultSet.getString(10);
+				pseudoColumn.data.charOctetLength = pseudoColumnsResultSet.getInt(11);
+				pseudoColumn.data.isNullable = pseudoColumnsResultSet.getString(12);
 				databaseDetails.pseudoColumns.add(pseudoColumn);
 			}
 			
 			ResultSet functionColumnsResultSet = metadata.getFunctionColumns(null, null, null, null);
 			while(functionColumnsResultSet.next()) {
 				FunctionColumn functionColumn = new FunctionColumn();
-				functionColumn.functionCatalog = functionColumnsResultSet.getString(1);
-				functionColumn.functionSchema = functionColumnsResultSet.getString(2);
-				functionColumn.functionName = functionColumnsResultSet.getString(3);
-				functionColumn.columnName = functionColumnsResultSet.getString(4);
-				functionColumn.columnType = functionColumnsResultSet.getShort(5);
-				functionColumn.dataType = functionColumnsResultSet.getInt(6);
-				functionColumn.typeName = functionColumnsResultSet.getString(7);
-				functionColumn.precision = functionColumnsResultSet.getInt(8);
-				functionColumn.length = functionColumnsResultSet.getInt(9);
-				functionColumn.scale = functionColumnsResultSet.getShort(10);
-				functionColumn.radix = functionColumnsResultSet.getShort(11);
-				functionColumn.nullable = functionColumnsResultSet.getShort(12);
+				functionColumn.data.functionCatalog = functionColumnsResultSet.getString(1);
+				functionColumn.data.functionSchema = functionColumnsResultSet.getString(2);
+				functionColumn.data.functionName = functionColumnsResultSet.getString(3);
+				functionColumn.data.columnName = functionColumnsResultSet.getString(4);
+				functionColumn.data.columnType = functionColumnsResultSet.getShort(5);
+				functionColumn.data.dataType = functionColumnsResultSet.getInt(6);
+				functionColumn.data.typeName = functionColumnsResultSet.getString(7);
+				functionColumn.data.precision = functionColumnsResultSet.getInt(8);
+				functionColumn.data.length = functionColumnsResultSet.getInt(9);
+				functionColumn.data.scale = functionColumnsResultSet.getShort(10);
+				functionColumn.data.radix = functionColumnsResultSet.getShort(11);
+				functionColumn.data.nullable = functionColumnsResultSet.getShort(12);
 				databaseDetails.functionColumns.add(functionColumn);
 			}
 			
 			ResultSet procedureColumnsResultSet = metadata.getProcedureColumns(null, null, null, null);
 			while(procedureColumnsResultSet.next()) {
 				ProcedureColumn procedureColumn = new ProcedureColumn();
-				procedureColumn.procedureCatalog = procedureColumnsResultSet.getString(1);
-				procedureColumn.procedureSchema = procedureColumnsResultSet.getString(2);
-				procedureColumn.procedureName = procedureColumnsResultSet.getString(3);
-				procedureColumn.columnName = procedureColumnsResultSet.getString(4);
-				procedureColumn.columnType = procedureColumnsResultSet.getShort(5);
-				procedureColumn.dataType = procedureColumnsResultSet.getInt(6);
-				procedureColumn.typeName = procedureColumnsResultSet.getString(7);
-				procedureColumn.precission = procedureColumnsResultSet.getInt(8);
-				procedureColumn.length = procedureColumnsResultSet.getInt(9);
-				procedureColumn.scale = procedureColumnsResultSet.getShort(10);
-				procedureColumn.radix = procedureColumnsResultSet.getShort(11);
-				procedureColumn.nullable = procedureColumnsResultSet.getShort(12);
-				procedureColumn.remarks = procedureColumnsResultSet.getString(13);
-				procedureColumn.columnDefaultValue = procedureColumnsResultSet.getString(14);
-				procedureColumn.charOctetLength = procedureColumnsResultSet.getInt(17);
-				procedureColumn.ordinalPosition = procedureColumnsResultSet.getInt(18);
-				procedureColumn.isNullable = procedureColumnsResultSet.getString(19);
-				procedureColumn.specificName = procedureColumnsResultSet.getString(20);
+				procedureColumn.data.procedureCatalog = procedureColumnsResultSet.getString(1);
+				procedureColumn.data.procedureSchema = procedureColumnsResultSet.getString(2);
+				procedureColumn.data.procedureName = procedureColumnsResultSet.getString(3);
+				procedureColumn.data.columnName = procedureColumnsResultSet.getString(4);
+				procedureColumn.data.columnType = procedureColumnsResultSet.getShort(5);
+				procedureColumn.data.dataType = procedureColumnsResultSet.getInt(6);
+				procedureColumn.data.typeName = procedureColumnsResultSet.getString(7);
+				procedureColumn.data.precission = procedureColumnsResultSet.getInt(8);
+				procedureColumn.data.length = procedureColumnsResultSet.getInt(9);
+				procedureColumn.data.scale = procedureColumnsResultSet.getShort(10);
+				procedureColumn.data.radix = procedureColumnsResultSet.getShort(11);
+				procedureColumn.data.nullable = procedureColumnsResultSet.getShort(12);
+				procedureColumn.data.remarks = procedureColumnsResultSet.getString(13);
+				procedureColumn.data.columnDefaultValue = procedureColumnsResultSet.getString(14);
+				procedureColumn.data.charOctetLength = procedureColumnsResultSet.getInt(17);
+				procedureColumn.data.ordinalPosition = procedureColumnsResultSet.getInt(18);
+				procedureColumn.data.isNullable = procedureColumnsResultSet.getString(19);
+				procedureColumn.data.specificName = procedureColumnsResultSet.getString(20);
 				databaseDetails.procedureColumns.add(procedureColumn);
 			}
 			
 			ResultSet versionColumnsResultSet = metadata.getVersionColumns(null, null, null);
 			while(versionColumnsResultSet.next()) {
 				VersionColumn versionColumn = new VersionColumn();
-				versionColumn.scope = versionColumnsResultSet.getShort(1);
-				versionColumn.columnName = versionColumnsResultSet.getString(2);
-				versionColumn.dataType = versionColumnsResultSet.getInt(3);
-				versionColumn.typeName = versionColumnsResultSet.getString(4);
-				versionColumn.columnSize = versionColumnsResultSet.getInt(5);
-				versionColumn.bufferLength = versionColumnsResultSet.getInt(6);
-				versionColumn.decimalDigits = versionColumnsResultSet.getInt(7);
-				versionColumn.pseudoColumn = versionColumnsResultSet.getShort(8);
+				versionColumn.data.scope = versionColumnsResultSet.getShort(1);
+				versionColumn.data.columnName = versionColumnsResultSet.getString(2);
+				versionColumn.data.dataType = versionColumnsResultSet.getInt(3);
+				versionColumn.data.typeName = versionColumnsResultSet.getString(4);
+				versionColumn.data.columnSize = versionColumnsResultSet.getInt(5);
+				versionColumn.data.bufferLength = versionColumnsResultSet.getInt(6);
+				versionColumn.data.decimalDigits = versionColumnsResultSet.getInt(7);
+				versionColumn.data.pseudoColumn = versionColumnsResultSet.getShort(8);
 				databaseDetails.versionColumns.add(versionColumn);
 			}
 
 			ResultSet importedKeysResultSet = metadata.getImportedKeys(null, null, null);
 			while(importedKeysResultSet.next()) {
 				ImportedKey importedKey = new ImportedKey();
-				importedKey.primaryKeyTableCatalog = importedKeysResultSet.getString(1);
-				importedKey.primaryKeyTableSchema = importedKeysResultSet.getString(2);
-				importedKey.primaryKeyTableName = importedKeysResultSet.getString(3);
-				importedKey.primaryKeyColumnName = importedKeysResultSet.getString(4);
-				importedKey.foreignKeyTableCatalog = importedKeysResultSet.getString(5);
-				importedKey.foreignKeyTableSchema = importedKeysResultSet.getString(6);
-				importedKey.foreignKeyTableName = importedKeysResultSet.getString(7);
-				importedKey.foreignKeyColumnName = importedKeysResultSet.getString(8);
-				importedKey.keySequenceNumber = importedKeysResultSet.getShort(9);
-				importedKey.updateRule = importedKeysResultSet.getShort(10);
-				importedKey.deleteRule = importedKeysResultSet.getShort(11);
-				importedKey.foreignKeyName = importedKeysResultSet.getString(12);
-				importedKey.primaryKeyName = importedKeysResultSet.getString(13);
-				importedKey.deferrability = importedKeysResultSet.getShort(14);
+				importedKey.data.primaryKeyTableCatalog = importedKeysResultSet.getString(1);
+				importedKey.data.primaryKeyTableSchema = importedKeysResultSet.getString(2);
+				importedKey.data.primaryKeyTableName = importedKeysResultSet.getString(3);
+				importedKey.data.primaryKeyColumnName = importedKeysResultSet.getString(4);
+				importedKey.data.foreignKeyTableCatalog = importedKeysResultSet.getString(5);
+				importedKey.data.foreignKeyTableSchema = importedKeysResultSet.getString(6);
+				importedKey.data.foreignKeyTableName = importedKeysResultSet.getString(7);
+				importedKey.data.foreignKeyColumnName = importedKeysResultSet.getString(8);
+				importedKey.data.keySequenceNumber = importedKeysResultSet.getShort(9);
+				importedKey.data.updateRule = importedKeysResultSet.getShort(10);
+				importedKey.data.deleteRule = importedKeysResultSet.getShort(11);
+				importedKey.data.foreignKeyName = importedKeysResultSet.getString(12);
+				importedKey.data.primaryKeyName = importedKeysResultSet.getString(13);
+				importedKey.data.deferrability = importedKeysResultSet.getShort(14);
 				databaseDetails.importedKeys.add(importedKey);
 			}
 
 			ResultSet exportedKeysResultSet = metadata.getExportedKeys(null, null, null);
 			while(exportedKeysResultSet.next()) {
 				ExportedKey exportedKey = new ExportedKey();
-				exportedKey.primaryKeyTableCatalog = exportedKeysResultSet.getString(1);
-				exportedKey.primaryKeyTableSchema = exportedKeysResultSet.getString(2);
-				exportedKey.primaryKeyTableName = exportedKeysResultSet.getString(3);
-				exportedKey.primaryKeyColumnName = exportedKeysResultSet.getString(4);
-				exportedKey.foreignKeyTableCatalog = exportedKeysResultSet.getString(5);
-				exportedKey.foreignKeyTableSchema = exportedKeysResultSet.getString(6);
-				exportedKey.foreignKeyTableName = exportedKeysResultSet.getString(7);
-				exportedKey.foreignKeyColumnName = exportedKeysResultSet.getString(8);
-				exportedKey.keySequenceNumber = exportedKeysResultSet.getShort(9);
-				exportedKey.updateRule = exportedKeysResultSet.getShort(10);
-				exportedKey.deleteRule = exportedKeysResultSet.getShort(11);
-				exportedKey.foreignKeyName = exportedKeysResultSet.getString(12);
-				exportedKey.primaryKeyName = exportedKeysResultSet.getString(13);
-				exportedKey.deferrability = exportedKeysResultSet.getShort(14);
+				exportedKey.data.primaryKeyTableCatalog = exportedKeysResultSet.getString(1);
+				exportedKey.data.primaryKeyTableSchema = exportedKeysResultSet.getString(2);
+				exportedKey.data.primaryKeyTableName = exportedKeysResultSet.getString(3);
+				exportedKey.data.primaryKeyColumnName = exportedKeysResultSet.getString(4);
+				exportedKey.data.foreignKeyTableCatalog = exportedKeysResultSet.getString(5);
+				exportedKey.data.foreignKeyTableSchema = exportedKeysResultSet.getString(6);
+				exportedKey.data.foreignKeyTableName = exportedKeysResultSet.getString(7);
+				exportedKey.data.foreignKeyColumnName = exportedKeysResultSet.getString(8);
+				exportedKey.data.keySequenceNumber = exportedKeysResultSet.getShort(9);
+				exportedKey.data.updateRule = exportedKeysResultSet.getShort(10);
+				exportedKey.data.deleteRule = exportedKeysResultSet.getShort(11);
+				exportedKey.data.foreignKeyName = exportedKeysResultSet.getString(12);
+				exportedKey.data.primaryKeyName = exportedKeysResultSet.getString(13);
+				exportedKey.data.deferrability = exportedKeysResultSet.getShort(14);
 				databaseDetails.exportedKeys.add(exportedKey);
 			}
 			
 			ResultSet functionsResultSet = metadata.getFunctions(null, null, null);
 			while(functionsResultSet.next()) {
 				Function function = new Function();
-				function.functionCatalog = functionsResultSet.getString(1);
-				function.functionSchema = functionsResultSet.getString(2);
-				function.functionName = functionsResultSet.getString(3);
-				function.remarks = functionsResultSet.getString(4);
-				function.functionType = functionsResultSet.getShort(5);
-				function.specificName = functionsResultSet.getString(6);
+				function.data.functionCatalog = functionsResultSet.getString(1);
+				function.data.functionSchema = functionsResultSet.getString(2);
+				function.data.functionName = functionsResultSet.getString(3);
+				function.data.remarks = functionsResultSet.getString(4);
+				function.data.functionType = functionsResultSet.getShort(5);
+				function.data.specificName = functionsResultSet.getString(6);
 				databaseDetails.functions.add(function);
 			}
-
 
 			ResultSet userDefinedTypesResultSet = metadata.getUDTs(null, null, null, null);
 			while(userDefinedTypesResultSet.next()) {
 				UserDefinedType userDefinedType = new UserDefinedType();
-				userDefinedType.typeCatalog = userDefinedTypesResultSet.getString(1);
-				userDefinedType.typeSchema = userDefinedTypesResultSet.getString(2);
-				userDefinedType.typeName = userDefinedTypesResultSet.getString(3);
-				userDefinedType.classNmae = userDefinedTypesResultSet.getString(4);
-				userDefinedType.dataType = userDefinedTypesResultSet.getInt(5);
-				userDefinedType.remarks = userDefinedTypesResultSet.getString(6);
-				userDefinedType.baseType = userDefinedTypesResultSet.getShort(7);
+				userDefinedType.data.typeCatalog = userDefinedTypesResultSet.getString(1);
+				userDefinedType.data.typeSchema = userDefinedTypesResultSet.getString(2);
+				userDefinedType.data.typeName = userDefinedTypesResultSet.getString(3);
+				userDefinedType.data.classNmae = userDefinedTypesResultSet.getString(4);
+				userDefinedType.data.dataType = userDefinedTypesResultSet.getInt(5);
+				userDefinedType.data.remarks = userDefinedTypesResultSet.getString(6);
+				userDefinedType.data.baseType = userDefinedTypesResultSet.getShort(7);
 				databaseDetails.userDefinedTypes.add(userDefinedType);
 			}
+
+			ResultSet bestRowIdentifierResultSet = metadata.getBestRowIdentifier(null, null, null, 2, true);
+			while(bestRowIdentifierResultSet.next()) {
+				BestRowIdentifier bestRowIdentifier = new BestRowIdentifier();
+				bestRowIdentifier.data.scope = bestRowIdentifierResultSet.getShort(1);
+				bestRowIdentifier.data.columnName = bestRowIdentifierResultSet.getString(2);
+				bestRowIdentifier.data.dataType = bestRowIdentifierResultSet.getInt(3);
+				bestRowIdentifier.data.typeName = bestRowIdentifierResultSet.getString(4);
+				bestRowIdentifier.data.columnSize = bestRowIdentifierResultSet.getInt(5);
+				bestRowIdentifier.data.decimalDigits = bestRowIdentifierResultSet.getShort(7);
+				bestRowIdentifier.data.pseudoColumn = bestRowIdentifierResultSet.getShort(8);
+				databaseDetails.bestRowIdentifiers.add(bestRowIdentifier);
+			}
 			
-			//metadata.getBestRowIdentifier(catalog, schema, table, scope, nullable);
-			//metadata.getCrossReference(parentCatalog, parentSchema, parentTable, foreignCatalog, foreignSchema, foreignTable)
-			//metadata.getPrimaryKeys(catalog, schema, table);
-			//metadata.getIndexInfo(catalog, schema, table, unique, approximate);
-			//metadata.getProcedures(catalog, schemaPattern, procedureNamePattern);
-			//metadata.getSuperTables(catalog, schemaPattern, tableNamePattern)
-			//metadata.getSuperTypes(catalog, schemaPattern, typeNamePattern)
+			ResultSet crossReferenceResultSet = metadata.getCrossReference(null, null, null, null, null, null);
+			while(crossReferenceResultSet.next()) {
+				CrossReference crossReference = new CrossReference();
+				crossReference.data.parentKeyTableCatalog = crossReferenceResultSet.getString(1);
+				crossReference.data.parentKeyTableSchema = crossReferenceResultSet.getString(2);
+				crossReference.data.parentKeyTableName = crossReferenceResultSet.getString(3);
+				crossReference.data.parentKeyTableColumnName = crossReferenceResultSet.getString(4);
+				crossReference.data.foreignKeyTableCatalog = crossReferenceResultSet.getString(5);
+				crossReference.data.foreignKeyTableSchema = crossReferenceResultSet.getString(6);
+				crossReference.data.foreignKeyTableName = crossReferenceResultSet.getString(7);
+				crossReference.data.foreignKeyColumnName = crossReferenceResultSet.getString(8);
+				crossReference.data.sequenceNumber = crossReferenceResultSet.getShort(9);
+				crossReference.data.updateRule = crossReferenceResultSet.getShort(10);
+				crossReference.data.deleteRule = crossReferenceResultSet.getShort(11);
+				crossReference.data.foreignKeyName = crossReferenceResultSet.getString(12);
+				crossReference.data.parentKeyName = crossReferenceResultSet.getString(13);
+				crossReference.data.deferrability = crossReferenceResultSet.getShort(14);
+				databaseDetails.crossReferences.add(crossReference);
+			}
+
+			ResultSet primaryKeysResultSet = metadata.getPrimaryKeys(null, null, null);
+			while(primaryKeysResultSet.next()) {
+				PrimaryKey primaryKey = new PrimaryKey();
+				primaryKey.data.tableCatalog = primaryKeysResultSet.getString(1);
+				primaryKey.data.tableSchema = primaryKeysResultSet.getString(2);
+				primaryKey.data.tableName = primaryKeysResultSet.getString(3);
+				primaryKey.data.columnName = primaryKeysResultSet.getString(4);
+				primaryKey.data.keySequence = primaryKeysResultSet.getShort(5);
+				primaryKey.data.primaryKeyName = primaryKeysResultSet.getString(6);
+				databaseDetails.primaryKeys.add(primaryKey);
+			}
+
+			ResultSet indexInfosResultSet = metadata.getIndexInfo(null, null, null, false, false);
+			while(indexInfosResultSet.next()) {
+				IndexInfo indexInfo = new IndexInfo();
+				indexInfo.data.tableCatalog = indexInfosResultSet.getString(1);
+				indexInfo.data.tableSchema = indexInfosResultSet.getString(2);
+				indexInfo.data.tableName = indexInfosResultSet.getString(3);
+				indexInfo.data.nonUnique = indexInfosResultSet.getBoolean(4);
+				indexInfo.data.indexQualifier = indexInfosResultSet.getString(5);
+				indexInfo.data.indexName = indexInfosResultSet.getString(6);
+				indexInfo.data.type = indexInfosResultSet.getShort(7);
+				indexInfo.data.ordinalPosition = indexInfosResultSet.getShort(8);
+				indexInfo.data.columnName = indexInfosResultSet.getString(9);
+				indexInfo.data.ascendingOrDescending = indexInfosResultSet.getString(10);
+				indexInfo.data.cardinality = indexInfosResultSet.getLong(11);
+				indexInfo.data.pages = indexInfosResultSet.getLong(12);
+				indexInfo.data.filterCondition = indexInfosResultSet.getString(13);
+				databaseDetails.indexInfos.add(indexInfo);
+			}
+ 
+			ResultSet proceduresResultSet = metadata.getProcedures(null, null, null);
+			while(proceduresResultSet.next()) {
+				Procedure procedure = new Procedure();
+				procedure.data.procedureCatalog = proceduresResultSet.getString(1); 
+				procedure.data.procedureSchema = proceduresResultSet.getString(2);
+				procedure.data.procedureName = proceduresResultSet.getString(3);
+				procedure.data.remarks = proceduresResultSet.getString(7);
+				procedure.data.procedureType = proceduresResultSet.getShort(8);
+				procedure.data.specificName = proceduresResultSet.getString(9);
+				databaseDetails.procedures.add(procedure);
+			}
+			
+			ResultSet superTablesResultSet = metadata.getSuperTables(null, null, null);
+			while(superTablesResultSet.next()) {
+				SuperTable superTable = new SuperTable();
+				superTable.data.tableCatalog = superTablesResultSet.getString(1);
+				superTable.data.tableSchema = superTablesResultSet.getString(2);
+				superTable.data.tableName = superTablesResultSet.getString(3);
+				superTable.data.superTableName = superTablesResultSet.getString(4);
+				databaseDetails.superTables.add(superTable);
+			}
+			
+			ResultSet superTypesResultSet = metadata.getSuperTypes(null, null, null);
+			while(superTypesResultSet.next()) {
+				SuperType superType = new SuperType();
+				superType.typeCatalog = superTypesResultSet.getString(1);
+				superType.typeSchema = superTypesResultSet.getString(2);
+				superType.superTypeCatalog = superTypesResultSet.getString(3);
+				superType.superTypeSchema = superTypesResultSet.getString(4);
+				superType.superTypeName = superTypesResultSet.getString(5);
+				databaseDetails.superTypes.add(superType);
+			}
 						
 			connection.close();
 			return new ResponseEntity<>("{\"result\": \"SUCCESS\"}", HttpStatus.OK);
@@ -706,6 +497,5 @@ public class DatabaseRestController {
 			LOGGER.error(e.getMessage(), e);
 			return new ResponseEntity<>(new StringBuilder("{\"result\": \"").append(e.getMessage()).append("\"}").toString(), HttpStatus.NOT_FOUND);
 		} 
-	}
-	
+	}	
 }
